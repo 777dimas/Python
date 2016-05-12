@@ -14,9 +14,9 @@ username = driver.find_element_by_id(id_="txt_login")
 # find id "pas_password"
 password = driver.find_element_by_id(id_="pas_password")
 # enter login
-username.send_keys("dmitryb")
+username.send_keys("*****")
 # enter password
-password.send_keys("D380675561828")
+password.send_keys("*****")
 # click button "login"
 driver.find_element_by_id("sub_submit").click()
 ###############################################
@@ -29,9 +29,9 @@ username = driver.find_element_by_id(id_="P101_USERNAME")
 # find id "P101_PASSWORD"
 password = driver.find_element_by_id(id_="P101_PASSWORD")
 # enter login
-username.send_keys("dmitryb")
+username.send_keys("*****")
 # enter password
-password.send_keys("D380675561828")
+password.send_keys("*****")
 # click button "enter"
 driver.find_element_by_id(id_="P101_LOGIN").click()
 ###############################################
@@ -49,9 +49,9 @@ username = driver.find_element_by_name("Username")
 # find password "Password"
 password = driver.find_element_by_name("Password")
 # enter login
-username.send_keys("dmitryb")
+username.send_keys("*****")
 # enter password
-password.send_keys("D380675561828")
+password.send_keys("*****")
 # click button "enter"
 driver.find_element_by_name("Logon").click()
 ###############################################
