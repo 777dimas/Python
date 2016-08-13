@@ -1,0 +1,35 @@
+import configparser,  subprocess
+
+# parse and get serial number and serverIP from launcher.ini
+config = configparser.ConfigParser()
+config.read('launcher.ini')
+read1 = config.get('Options', 'Serial')
+read2 = config.get('Options', 'ServerIP')
+# parse and get serial number and serverIP from launcher.original.ini
+config = configparser.ConfigParser()
+config.read('launcher.original.ini')
+read3 = config.get('Options', 'Serial')
+read4 = config.get('Options', 'ServerIP')
+# compare values
+if read1 != read3:
+   read2 != read4;
+   pass
+# copy launcher.original.in in launcher.ini
+read_orig_ini=open("launcher.original.ini", 'r')
+try:
+      reading_file=read_orig_ini.read()
+      write_orig_ini=open("launcher.ini", 'w')
+      try:
+           write_ini.write(reading_file)
+      finally:
+           write_ini.close()
+finally:
+      read_orig_ini.close()
+# check AutoLogin value
+config = configparser.ConfigParser()
+config.read('launcher.ini')
+Auto_login = config.get('Options', 'AutoLogin')
+if not Auto_login:
+# start gui
+      subprocess.call("/home/dima/NewWork/Work2/gui.py", shell=True)
+
