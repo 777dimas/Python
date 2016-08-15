@@ -20,16 +20,24 @@ try:
       reading_file=read_orig_ini.read()
       write_orig_ini=open("launcher.ini", 'w')
       try:
-           write_ini.write(reading_file)
+           write_orig_ini.write(reading_file)
       finally:
-           write_ini.close()
+           write_orig_ini.close()
 finally:
       read_orig_ini.close()
-# check AutoLogin value
+# check AutoLogin, Logins, Serial value
 config = configparser.ConfigParser()
 config.read('launcher.ini')
 Auto_login = config.get('Options', 'AutoLogin')
+Logins = config.get('Options', 'Logins')
+Serial = config.get('Options', 'Serial')
 if not Auto_login:
 # start gui
-      subprocess.call("/home/dima/NewWork/Work2/gui.py", shell=True)
+      subprocess.call("/home/dima/PycharmProjects/Python/gui.py", shell=True)
+# start gui2
+else:
+    if not Logins:
+      subprocess.call("/home/dima/PycharmProjects/Python/gui2.py", shell=True)
+    if not Serial:
+      subprocess.call("/home/dima/PycharmProjects/Python/gui2.py", shell=True)
 
