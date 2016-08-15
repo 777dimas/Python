@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import sys
+import sys, configparser
 from PyQt5.QtWidgets import QPushButton, QLabel, QDesktopWidget, QWidget, QMessageBox, QApplication, QComboBox
 
 
@@ -11,12 +11,17 @@ class Example(QWidget):
 
         self.initUI()
 
+
     def initUI(self):
+        config = configparser.ConfigParser()
+        config.read('launcher.original.ini')
+        Login = config.get('Options', 'Logins')
+        addlogins = Login.split(",")
 
         self.lbl = QLabel("Logins", self)
 
         combo = QComboBox(self)
-        combo.addItems(["1", "2", "3", "4", "5"])
+        combo.addItems(addlogins)
 
         combo.move(50, 50)
         self.lbl.move(50, 30)
@@ -25,6 +30,8 @@ class Example(QWidget):
         btn.resize(btn.sizeHint())
         btn.move(220, 50)
 
+    #    btn.clicked.connect(self.buttonSet())
+
         self.resize(350, 140)
         self.center()
         self.setWindowTitle('Message box')
@@ -32,6 +39,15 @@ class Example(QWidget):
 
         self.setWindowTitle('Launcher')
         self.show()
+
+
+  #  def buttonSet(self):
+   #     config = configparser.ConfigParser()
+    #    config.read('launcher.ini')
+     #   config.set('Options', 'Autologin', )
+
+
+
 
     def center(self):
 
