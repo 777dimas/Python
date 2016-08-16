@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import sys, configparser
-from PyQt5.QtWidgets import QPushButton, QLabel, QDesktopWidget, QWidget, QMessageBox, QApplication, QComboBox
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (QPushButton, QLabel, QDesktopWidget, QWidget, QMessageBox, QApplication, QComboBox)
 
 
 class Example(QWidget):
@@ -10,7 +11,6 @@ class Example(QWidget):
         super().__init__()
 
         self.initUI()
-
 
     def initUI(self):
         config = configparser.ConfigParser()
@@ -27,10 +27,8 @@ class Example(QWidget):
         self.lbl.move(50, 30)
 
         btn = QPushButton('Set', self)
-        btn.resize(btn.sizeHint())
-        btn.move(220, 50)
-
-    #    btn.clicked.connect(self.buttonSet())
+        btn.setGeometry(230, 50, 42, 32)
+        btn.clicked.connect(self.buttonSet)
 
         self.resize(350, 140)
         self.center()
@@ -40,14 +38,12 @@ class Example(QWidget):
         self.setWindowTitle('Launcher')
         self.show()
 
-
-  #  def buttonSet(self):
-   #     config = configparser.ConfigParser()
-    #    config.read('launcher.ini')
-     #   config.set('Options', 'Autologin', )
-
-
-
+    def buttonSet(self):
+        config = configparser.ConfigParser()
+        config.read('launcher.ini')
+        config.set('Options', 'Autologin', '67')
+        with open('launcher.ini', 'w') as configfile:
+            config.write(configfile)
 
     def center(self):
 
