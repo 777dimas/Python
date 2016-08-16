@@ -31,6 +31,8 @@ finally:
 # check AutoLogin, Logins, Serial value
 config.read('launcher.ini')
 Auto_login = config.get('Options', 'AutoLogin')
+Logins = config.get('Options', 'Logins')
+Serial = config.get('Options', 'Serial')
 if not Auto_login:
 
 # start gui
