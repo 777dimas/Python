@@ -9,7 +9,6 @@ from PyQt5.QtWidgets import (QPushButton, QLabel, QDesktopWidget, QWidget, QMess
 class Example(QWidget):
     def __init__(self):
         super().__init__()
-
         self.initUI()
 
     def initUI(self):
@@ -19,7 +18,6 @@ class Example(QWidget):
         addlogins = Login.split(",")
 
         self.lbl = QLabel("Logins", self)
-
         combo = QComboBox(self)
         combo.addItems(addlogins)
 
@@ -41,7 +39,7 @@ class Example(QWidget):
     def buttonSet(self):
         config = configparser.ConfigParser()
         config.read('launcher.ini')
-        config.set('Options', 'Autologin', '67')
+        config.set('Options', 'Autologin',writeValue)
         with open('launcher.ini', 'w') as configfile:
             config.write(configfile)
 
@@ -63,8 +61,9 @@ class Example(QWidget):
         else:
             event.ignore()
 
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = Example()
     sys.exit(app.exec_())
+
+writeValue = QComboBox()
