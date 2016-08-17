@@ -36,12 +36,12 @@ Serial = config.get('Options', 'Serial')
 if not Auto_login:
 
 # start gui
-      subprocess.call("/home/dima/PycharmProjects/Python/gui.py", shell=True)
+      subprocess.call("/home/dima/PycharmProjects/Python/custom_login_gui.py", shell=True)
 
 # start gui2
 else:
     if not Logins:
-      subprocess.call("/home/dima/PycharmProjects/Python/gui2.py", shell=True)
+      subprocess.call("/home/dima/PycharmProjects/Python/error_gui.py", shell=True)
     if not Serial:
-      subprocess.call("/home/dima/PycharmProjects/Python/gui2.py", shell=True)
+      subprocess.call("/home/dima/PycharmProjects/Python/error_gui.py", shell=True)
 
