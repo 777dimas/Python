@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import sys, configparser
-from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (QPushButton, QLabel, QDesktopWidget, QWidget, QMessageBox, QApplication, QComboBox)
 
 
 class Example(QWidget):
+
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -18,12 +18,10 @@ class Example(QWidget):
         addlogins = Login.split(",")
 
         self.lbl = QLabel("Logins", self)
-        combo = QComboBox(self)
-        combo.addItems(addlogins)
+        self.combo = QComboBox(self)
+        self.combo.addItems(addlogins)
 
-
-
-        combo.move(50, 50)
+        self.combo.move(50, 50)
         self.lbl.move(50, 30)
 
         btn = QPushButton('Set', self)
@@ -41,7 +39,7 @@ class Example(QWidget):
     def buttonSet(self):
         config = configparser.ConfigParser()
         config.read('launcher.ini')
-        config.set('Options', 'Autologin', comboBoxObject.currentText())
+        config.set('Options', 'Autologin', self.combo.currentText())
         with open('launcher.ini', 'w') as configfile:
             config.write(configfile)
 
@@ -68,4 +66,3 @@ if __name__ == '__main__':
     ex = Example()
     sys.exit(app.exec_())
 
-comboBoxObject = QComboBox()
