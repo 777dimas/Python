@@ -21,6 +21,8 @@ class Example(QWidget):
         combo = QComboBox(self)
         combo.addItems(addlogins)
 
+
+
         combo.move(50, 50)
         self.lbl.move(50, 30)
 
@@ -39,7 +41,7 @@ class Example(QWidget):
     def buttonSet(self):
         config = configparser.ConfigParser()
         config.read('launcher.ini')
-        config.set('Options', 'Autologin',writeValue)
+        config.set('Options', 'Autologin', comboBoxObject.currentText())
         with open('launcher.ini', 'w') as configfile:
             config.write(configfile)
 
@@ -66,4 +68,4 @@ if __name__ == '__main__':
     ex = Example()
     sys.exit(app.exec_())
 
-writeValue = QComboBox()
+comboBoxObject = QComboBox()
